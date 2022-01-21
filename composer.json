@@ -1,0 +1,32 @@
+{
+    "name": "vgplay/giftcode",
+    "description": "Giftcode",
+    "type": "library",
+    "require": {
+        "php": "^7",
+        "laravel/framework": "^6|^7|^8",
+        "vgplay/laravel-redis-model": "^1",
+        "vgplay/contracts": "^1"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vgplay\\Giftcode\\": "src/",
+            "Vgplay\\Giftcode\\Database\\Factories\\": "database/factories"
+        }
+    },
+    "authors": [
+        {
+            "name": "dung199551",
+            "email": "dung199551@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vgplay\\Giftcode\\GiftcodeServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable"
+}
