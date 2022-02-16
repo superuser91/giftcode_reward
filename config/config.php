@@ -1,14 +1,9 @@
 <?php
 
 return [
-    'giftcode' => [
+    'giftcodes' => [
         'prefix' => '/admin',
         'middleware' => ['auth:admin'],
-        'permissions' => [
-            'index' => 'giftcodes.index',
-            'create' => 'giftcodes.create',
-            'update' => 'giftcodes.update',
-            'delete' => 'giftcodes.delete',
-        ]
+        'policy' => 'App\\Policies\\GiftcodePolicy'
     ]
 ];
