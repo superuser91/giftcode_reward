@@ -32,7 +32,7 @@ class Giftcode extends Model implements Cacheable, Deliverable
         return $this->hasMany(GiftcodeRecord::class);
     }
 
-    public function deliver(Player $buyer, array $data)
+    public function deliver(Player $buyer, array $data = [])
     {
         /**
          * @var GiftcodeRecord
