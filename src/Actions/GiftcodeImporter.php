@@ -16,7 +16,14 @@ class GiftcodeImporter
         $this->validate($files);
 
         foreach ($files as $file) {
-            $data = explode(PHP_EOL, $file->get());
+            $data = [];
+            $handle = fopen($file, "r");
+            if ($handle) {
+                while (($line = fgets($handle)) !== false) {
+                    $data[] = trim($line);
+                }
+                fclose($handle);
+            }
             $this->handle($giftcode, $data);
         }
 
@@ -27,8 +34,15 @@ class GiftcodeImporter
     {
         foreach ($files as $file) {
             $giftcode = Giftcode::where('name', basename($file, '.txt'))->first();
+            $data = [];
             if (!is_null($giftcode)) {
-                $data = explode(PHP_EOL, file_get_contents($file));
+                $handle = fopen($file, "r");
+                if ($handle) {
+                    while (($line = fgets($handle)) !== false) {
+                        $data[] = trim($line);
+                    }
+                    fclose($handle);
+                }
                 $this->handle($giftcode, $data);
             }
         }
