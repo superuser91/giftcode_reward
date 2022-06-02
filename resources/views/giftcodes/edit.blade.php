@@ -1,4 +1,4 @@
-@extends('vgplay::giftcodes.layout')
+@extends(config('vgplay.giftcodes.layout'))
 
 @section('content')
     <div class="container-fluid">
