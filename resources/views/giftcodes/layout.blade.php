@@ -49,14 +49,14 @@
             </div>
         </div>
     @endif
-    <div class="content">
+    <div class="content" id="{{ config('vgplay.giftcodes.pjax_container_id') }}">
         @yield('content')
     </div>
     @stack('scripts')
     <script>
-      $('form').submit(function(e) {
-        $(this).attr('disabled', true);
-        Swal.fire({
+        $('form').submit(function(e) {
+            $(this).attr('disabled', true);
+            Swal.fire({
                 title: 'Đang xử lý ...',
                 showConfirmButton: false,
                 allowOutsideClick: false,
@@ -65,7 +65,7 @@
                     Swal.showLoading()
                 },
             });
-      })
+        })
     </script>
 
 </body>
