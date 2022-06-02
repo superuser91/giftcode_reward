@@ -18,15 +18,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="/vendor/admin-lte/plugins/daterangepicker/daterangepicker.css" crossorigin="anonymous">
-    <script src="/vendor/admin-lte/plugins/daterangepicker/daterangepicker.js"></script>
     <script src="/vendor/admin-lte/plugins/sweetalert2/sweetalert2.all.js"></script>
     <script src="/vendor/admin-lte/plugins/datatables/jquery.dataTables.js"></script>
     <script src="/vendor/admin-lte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
     <script src="/vendor/admin-lte/plugins/datatables-responsive/js/dataTables.responsive.js"></script>
     <script src="/vendor/admin-lte/plugins/datatables-responsive/js/responsive.bootstrap4.js"></script>
-    <script src="/vendor/admin-lte/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
-    <script src="/vendor/admin-lte/plugins/datatables-buttons/js/buttons.bootstrap4.js"></script>
     @stack('head')
 
 </head>
