@@ -4,6 +4,7 @@ namespace Vgplay\Giftcode\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 use Vgplay\Contracts\Deliverable;
 use Vgplay\Contracts\Player;
 use Vgplay\Giftcode\Exceptions\GiftcodeLimitExceededException;
@@ -34,21 +35,21 @@ class Giftcode extends Model implements Cacheable, Deliverable
 
     public function deliver(Player $buyer, array $data = [])
     {
-        /**
-         * @var GiftcodeRecord
-         */
-        $record = GiftcodeRecord::where('giftcode_id', $this->id)
-            ->where(function ($query) {
-                $query->where('claimed_at', null)
-                    ->orWhere('is_shared', true);
-            })->first();
+        return DB::transaction(function () use ($buyer, $data) {
+            /** @var GiftcodeRecord */
+            $record = GiftcodeRecord::where('giftcode_id', $this->id)
+                ->where(function ($query) {
+                    $query->where('claimed_at', null)
+                        ->orWhere('is_shared', true);
+                })->lockForUpdate()->first();
 
-        if (is_null($record)) {
-            throw new GiftcodeLimitExceededException();
-        }
+            if (is_null($record)) {
+                throw new GiftcodeLimitExceededException();
+            }
 
-        $record->claim($buyer);
+            $record->claim($buyer);
 
-        return $record;
+            return $record;
+        });
     }
 }
