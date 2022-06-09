@@ -30,9 +30,17 @@ class GiftcodeRecord extends Model
 
     public function claim(Player $player)
     {
-        return $this->update([
-            'user_id' => $player->getId(),
-            'claimed_at' => now()
-        ]);
+        $claimed = static::where('id', $this->id)
+            ->where(function ($query) {
+                $query->where('claimed_at', null)
+                    ->orWhere('is_shared', true);
+            })->update([
+                'user_id' => $player->getId(),
+                'claimed_at' => now()
+            ]);
+
+        if (!$claimed) {
+            throw new GiftcodeRecordJustTakenException();
+        }
     }
 }
