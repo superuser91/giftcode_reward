@@ -2,13 +2,13 @@
 
 namespace Vgplay\Giftcode\Models;
 
+use Hacoidev\CachingModel\Contracts\Cacheable;
+use Hacoidev\CachingModel\HasCache;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Vgplay\Contracts\Deliverable;
 use Vgplay\Contracts\Player;
 use Vgplay\Giftcode\Exceptions\GiftcodeLimitExceededException;
-use Vgplay\LaravelRedisModel\Contracts\Cacheable;
-use Vgplay\LaravelRedisModel\HasCache;
 use Vgplay\Giftcode\Traits\HasFactory;
 
 class Giftcode extends Model implements Cacheable, Deliverable
